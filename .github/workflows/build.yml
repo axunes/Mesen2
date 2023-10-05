@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         compiler: [clang]
-        os: [macos-latest-xlarge]
+        os: [macos-latest-large]
       fail-fast: false
     runs-on: ${{ matrix.os }}
 
