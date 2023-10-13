@@ -52,6 +52,8 @@ ifneq ($(filter arm%,$(MACHINE)),)
 	MESENPLATFORM := $(MESENOS)-arm64
 endif
 
+MESENPLATFORM := $(MESENOS)-arm64
+
 MESENFLAGS += -m64
 
 DEBUG ?= 0
@@ -94,8 +96,8 @@ ifneq ($(STATICLINK),false)
 	LINKOPTIONS += -static-libgcc -static-libstdc++ 
 endif
 
-CXXFLAGS = -fPIC -Wall --std=c++17 $(MESENFLAGS) $(SDL2INC) -I $(realpath ./) -I $(realpath ./Core) -I $(realpath ./Utilities) -I $(realpath ./Linux)
-CFLAGS = -fPIC -Wall $(MESENFLAGS)
+CXXFLAGS = -fPIC -Wall --std=c++17 -target arm64-apple-macos11 $(MESENFLAGS) $(SDL2INC) -I $(realpath ./) -I $(realpath ./Core) -I $(realpath ./Utilities) -I $(realpath ./Linux)
+CFLAGS = -fPIC -Wall -target arm64-apple-macos11 $(MESENFLAGS)
 
 OBJFOLDER := obj.$(MESENPLATFORM)
 DEBUGFOLDER := bin/$(MESENPLATFORM)/Debug
