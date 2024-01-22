@@ -98,14 +98,11 @@ ifeq ($(MESENOS),osx)
 	LINKOPTIONS += -framework Foundation -framework Cocoa
 endif
 
+MESENFLAGS += -target arm64-apple-macos11 -mmacosx-version-min=11 -arch arm64
+
 CXXFLAGS = -fPIC -Wall --std=c++17 $(MESENFLAGS) $(SDL2INC) -I $(realpath ./) -I $(realpath ./Core) -I $(realpath ./Utilities) -I $(realpath ./Linux) -I $(realpath ./MacOS)
 OBJCXXFLAGS = $(CXXFLAGS) -framework Foundation -framework Cocoa
 CFLAGS = -fPIC -Wall $(MESENFLAGS)
-
-
-
-CFLAGS += -target arm64-apple-macos11 #-mmacosx-version-min=10.15 -arch arm64
-CXXFLAGS += -target arm64-apple-macos11 #-mmacosx-version-min=10.15 -arch arm64
 
 OBJFOLDER := obj.$(MESENPLATFORM)
 DEBUGFOLDER := bin/$(MESENPLATFORM)/Debug
